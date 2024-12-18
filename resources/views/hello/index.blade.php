@@ -1,24 +1,28 @@
-<html>
-    <head>
-        <title>Hello/Index</title>
-        <style>
-            body {font-size:16pt; color:#999;}
-            h1 {font-size:100pt; text-align:right; color:#f6f6f6; margin:-20px 0px -30px 0px; letter-spacing: -4pt;}
-        </style>
-    </head>
-    <body>
-        <h1>Blade/Index</h1>
-        <p>&#064;forディレクティブの例</p>
-        <ol>
-            @php
-                $counter = 0;
-            @endphp
-            @while ($counter < count($data))
-                <li>{{$data[$counter]}}</li>
-                @php
-                    $counter++;
-                @endphp
-            @endwhile
-        </ol>
-    </body>
-</html>
+@extends('layouts.helloapp')
+
+@section('title', 'Index')
+
+@section('menubar')
+    @parent
+    インデックスページ
+@endsection
+
+@section('content')
+    <p>ここが本文</p>
+    <p>必要なだけ記述可能</p>
+
+    @component('components.message')
+        @slot('msg_title')
+            CAUTION!
+        @endslot
+
+        @slot('msg_content')
+            これはメッセージです。
+        @endslot
+
+    @endcomponent
+@endsection
+
+@section('footer')
+    copyright 2024 OKABE
+@endsection
