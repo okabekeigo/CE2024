@@ -8,19 +8,9 @@
 @endsection
 
 @section('content')
-    <p>ここが本文</p>
-    <p>必要なだけ記述可能</p>
-
-    @component('components.message')
-        @slot('msg_title')
-            CAUTION!
-        @endslot
-
-        @slot('msg_content')
-            これはメッセージです。
-        @endslot
-
-    @endcomponent
+    <p>ここが本文のコンテンツです。</p>
+    <p>これは、<middleware>google.com</middleware>へのリンクです。</p>
+    <p>これは、<middleware>yahoo.co.jp</middleware>へのリンクです。</p>
 @endsection
 
 @section('footer')
