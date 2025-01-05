@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('hello', [
             HelloMiddleware::class,
         ]);
+        $middleware->trustProxies(at: '*')
+            ->validateCsrfTokens(except: [
+                'hello',
+            ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

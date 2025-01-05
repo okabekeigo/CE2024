@@ -27,7 +27,7 @@ class HelloRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            // 'name' => 'required',
             'mail' => 'email',
             'age' => ['numeric', new Myrule(5)],
         ];
