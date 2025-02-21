@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\BoardController;
@@ -11,7 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', [HelloController::class, 'index']);
+Route::get('/hello', [HelloController::class, 'index'])->middleware('auth');
 
 Route::post('/hello', [HelloController::class, 'post']);
 
@@ -57,3 +58,10 @@ Route::post('/board/add', [BoardController::class, 'create']);
 
 
 Route::resource('rest', RestappController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/hello/auth', [HelloController::class, 'getAuth']);
+Route::post('/hello/auth', [HelloController::class, 'postAuth']);
